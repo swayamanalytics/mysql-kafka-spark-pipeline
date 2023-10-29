@@ -1,4 +1,9 @@
 # mysql-kafka-spark-pipeline
+
+This repos is built by taking inspiration from 
+
+https://github.com/developershomes/Spark.git
+
 ### Clone this repos
 
 ```
