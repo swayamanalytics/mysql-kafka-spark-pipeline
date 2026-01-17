@@ -40,6 +40,18 @@ services:
     volumes:
       - ${PWD}/volume/mysqldata:/var/lib/mysql
       - ${PWD}/scripts/sales:/docker-entrypoint-initdb.d
+  canal-server:
+    image: canal/canal-server:latest
+    container_name: canal_server
+    ports:
+      - "11111:11111"
+    volumes:
+      - ${PWD}/scripts/instance.properties:/home/admin/canal/conf/example/instance.properties
+    environment:
+      # Set the mode, 'tcp' is default, can also be 'kafka', etc.
+      canal.serverMode: tcp
+    depends_on:
+      - mysql
   connect:
     image: quay.io/debezium/connect:2.7
     container_name: container_kafka_connect
