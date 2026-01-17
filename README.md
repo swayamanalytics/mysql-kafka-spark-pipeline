@@ -65,3 +65,17 @@ docker logs <containerid>
 ```
 
 Get the jupyter url from the above command and login
+
+
+## Start Kafka
+```bash
+docker compose -f local/docker-compose.yml up -d 
+```
+## Check running status
+```bash 
+docker compose -f local/docker-compose.yml ps --format "#{{.State}}# {{.Service}}" | sed -e 's/#running#/✅/' | sed -r 's/#[a-z]+#/❌/' 
+```
+## Start Pinot
+```bash
+docker compose -f local/docker-compose-pinot.yml up -d 
+```
